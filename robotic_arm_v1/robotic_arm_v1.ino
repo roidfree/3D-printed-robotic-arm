@@ -61,4 +61,4 @@ void loop() {
   delay(20);                           // waits for the servo to get there
 }
 
-/* test commit */
+/* This is Aurora's changes */
