@@ -12,7 +12,7 @@ const int elbowpot0 = A0;  //base mount motor analog pin used to connect the pot
 const int elbowpot1 = A1; //pan motor 
 const int elbowpot2 = A2; 
 int buttonState = 0;  // variable for reading the pushbutton status
-bool STATE = false;
+bool magnet_state = false; // 
 int elbowval0;             // variable to read the value from the analog pin
 int elbowval1;
 int elbowval2;
@@ -48,9 +48,9 @@ void loop() {
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
     // turn LED on:
-    STATE = !STATE;
+    magnet_state != magnet_state;
   } 
-  digitalWrite(claw, STATE);
+  digitalWrite(claw, magnet_state);
   /*if (buttonState == HIGH) {
     // turn LED on:
     digitalWrite(claw, HIGH);
