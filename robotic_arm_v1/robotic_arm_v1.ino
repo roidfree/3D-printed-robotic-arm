@@ -35,7 +35,7 @@ void setup() {
 
 void loop() {
   elbowval0 = analogRead(elbowpot0);        // reads the value of the potentiometer (value between 0 and 1023)
-  elbowval0 = map(elbowval0, 0, 1023, 10, 200);  // scale it for use with the servo (value between 0 and 180)
+  elbowval0 = map(elbowval0, 0, 1023, 0, 200);  // scale it for use with the servo (value between 0 and 180)
   myservo0.write(elbowval0);           // sets the servo position according to the scaled value
   elbowval1 = analogRead(elbowpot1);        // reads the value of the potentiometer (value between 0 and 1023)
   elbowval1 = map(elbowval1, 0, 1023, 0, 180);  // scale it for use with the servo (value between 0 and 180)
@@ -47,12 +47,12 @@ void loop() {
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   buttonState = digitalRead(buttonPin);
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
-    // turn LED on:
-    magnet_state != magnet_state;
-    digitalWrite(claw, magnet_state);
-  } 
-  
+  if (buttonState == HIGH) { //if button is pressed
+    digitalWrite(claw, HIGH); //Turn claw on
+  }
+  else {
+    digitalWrite(claw, 
+  }
   delay(50);                           // waits for the servo to get there
 }
 
