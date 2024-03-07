@@ -29,6 +29,7 @@ void setup() {
   myservo0.attach(2);  // attaches the servo on pin 5 to the servo object for the grove
   myservo1.attach(4); //2nd
   myservo2.attach(6); 
+  digitalWrite(claw, magnet_state);
 }
 
 
@@ -49,16 +50,10 @@ void loop() {
   if (buttonState == HIGH) {
     // turn LED on:
     magnet_state != magnet_state;
+    digitalWrite(claw, magnet_state);
   } 
-  digitalWrite(claw, magnet_state);
-  /*if (buttonState == HIGH) {
-    // turn LED on:
-    digitalWrite(claw, HIGH);
-  } else {
-    // turn LED off:
-    digitalWrite(claw, LOW);
-  }*/
-  delay(20);                           // waits for the servo to get there
+  
+  delay(50);                           // waits for the servo to get there
 }
 
 /* This is Aurora's changes */
