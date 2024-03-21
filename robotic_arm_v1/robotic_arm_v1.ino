@@ -30,13 +30,13 @@ void setup() {
   myservo2.attach(6); 
   myservo3.attach(7);
   digitalWrite(claw, magnet_state);
-  Serial.begin(9600);
 }
 
 
 void loop() {
   elbowval0 = analogRead(elbowpot0);        // reads the value of the potentiometer (value between 0 and 1023)
   elbowval0 = map(elbowval0, 0, 1023, 60, 170);  // scale it for use with the servo (value between 0 and 180)
+  //elbowval0 = map(elbowval0, 0, 1023, 0, 200);  // scale it for use with the servo (value between 0 and 180)
   myservo0.write(elbowval0);           // sets the servo position according to the scaled value
   elbowval1 = analogRead(elbowpot1);        // reads the value of the potentiometer (value between 0 and 1023)
   elbowval1 = map(elbowval1, 0, 1023, 0, 80);  // scale it for use with the servo (value between 0 and 180)
@@ -44,7 +44,7 @@ void loop() {
   elbowval1 = map(elbowval1, 0, 80, 80, 0);  // scale it for use with the servo (value between 0 and 180)
   myservo2.write(elbowval1);           // sets the servo position according to the scaled value
   elbowval2 = analogRead(elbowpot2);        // reads the value of the potentiometer (value between 0 and 1023)
-  elbowval2 = map(elbowval2, 0, 1023, 20, 100);  // scale it for use with the servo (value between 0 and 180)
+  elbowval2 = map(elbowval2, 0, 1023, 0, 120);  // scale it for use with the servo (value between 0 and 180)
   myservo3.write(elbowval2);           // sets the servo position according to the scaled value
   buttonState = digitalRead(buttonPin);
   // check if the push0button is pressed. If it is, the buttonState is HIGH:
@@ -53,7 +53,14 @@ void loop() {
   if (buttonState == HIGH) {
     nowmillis = millis();
     if(nowmillis >= lastmillis + 500) {
-
+  if (buttonState == HIGH) { //if button is pressed
+    digitalWrite(claw, HIGH); //Turn claw on
+  }
+  else {
+    digitalWrite(claw, magnet_state);
+  }
+  delay(50);                           // waits for the servo to get there
+}
     
     // turn LED on:
     if (magnet_state == 1){magnet_state = 0;}
@@ -61,9 +68,7 @@ void loop() {
     //magnet_state = 1;
   //magnet_state = buttonState;
         digitalWrite(claw, magnet_state);
-        Serial.println(magnet_state);
         lastmillis = nowmillis;
     }
 
           }
-}
