@@ -1,6 +1,6 @@
-#include <Servo.h>
+#include <Servo.h> // ensure you have the proper libraries installed within Arduino folders
 
-Servo myservo0;  // create servo object to control a servo
+Servo myservo0;  // create servo object to control it
 Servo myservo1;
 Servo myservo2;
 Servo myservo3;
@@ -38,14 +38,14 @@ void loop() {
   elbowval0 = map(elbowval0, 0, 1023, 60, 170);  // scale it for use with the servo (value between 0 and 180)
   //elbowval0 = map(elbowval0, 0, 1023, 0, 200);  // scale it for use with the servo (value between 0 and 180)
   myservo0.write(elbowval0);           // sets the servo position according to the scaled value
-  elbowval1 = analogRead(elbowpot1);        // reads the value of the potentiometer (value between 0 and 1023)
-  elbowval1 = map(elbowval1, 0, 1023, 0, 80);  // scale it for use with the servo (value between 0 and 180)
-  myservo1.write(elbowval1);           // sets the servo position according to the scaled value
-  elbowval1 = map(elbowval1, 0, 80, 80, 0);  // scale it for use with the servo (value between 0 and 180)
-  myservo2.write(elbowval1);           // sets the servo position according to the scaled value
-  elbowval2 = analogRead(elbowpot2);        // reads the value of the potentiometer (value between 0 and 1023)
-  elbowval2 = map(elbowval2, 0, 1023, 0, 120);  // scale it for use with the servo (value between 0 and 180)
-  myservo3.write(elbowval2);           // sets the servo position according to the scaled value
+  elbowval1 = analogRead(elbowpot1);        
+  elbowval1 = map(elbowval1, 0, 1023, 0, 80);  
+  myservo1.write(elbowval1);           
+  elbowval1 = map(elbowval1, 0, 80, 80, 0);  
+  myservo2.write(elbowval1);           
+  elbowval2 = analogRead(elbowpot2);        
+  elbowval2 = map(elbowval2, 0, 1023, 0, 120);  
+  myservo3.write(elbowval2);           
   buttonState = digitalRead(buttonPin);
   // check if the push0button is pressed. If it is, the buttonState is HIGH:
   //buttonState = digitalRead(buttonPin);
