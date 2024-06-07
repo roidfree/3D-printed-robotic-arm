@@ -45,7 +45,9 @@ void loop() {
   myservo2.write(elbowval1);           
   elbowval2 = analogRead(elbowpot2);        
   elbowval2 = map(elbowval2, 0, 1023, 0, 120);  
-  myservo3.write(elbowval2);           
+  myservo3.write(elbowval2);       
+
+  //-----------------------------------    
   buttonState = digitalRead(buttonPin);
   // check if the push0button is pressed. If it is, the buttonState is HIGH:
   //buttonState = digitalRead(buttonPin);
@@ -61,12 +63,13 @@ void loop() {
   }
   delay(50);                           // waits for the servo to get there
 }
+   //-----------------------------------
     
     // turn LED on:
     if (magnet_state == 1){magnet_state = 0;}
     else if (magnet_state ==0){magnet_state =1;}
     //magnet_state = 1;
-  //magnet_state = buttonState;
+    //magnet_state = buttonState;
         digitalWrite(claw, magnet_state);
         lastmillis = nowmillis;
     }
